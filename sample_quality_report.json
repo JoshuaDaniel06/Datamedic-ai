@@ -1,0 +1,8 @@
+{
+    "total_records": 10,
+    "missing_values": 3,
+    "duplicate_records": 2,
+    "invalid_age_records": 2,
+    "invalid_email_records": 1,
+    "quality_score": 20.0
+}
