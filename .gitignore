@@ -1,12 +1,16 @@
 # Environment variables
 .env
+.env.*
 
 # Python cache
 __pycache__/
 *.py[cod]
+*.pyo
 
 # Local databases
 *.db
+*.sqlite
+*.sqlite3
 
 # Virtual environments
 venv/
@@ -19,4 +23,18 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Generated data-quality reports
 quality_report.json
+
+# Python build files
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Node / React frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
