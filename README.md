@@ -1,84 +1,44 @@
-🩺 DataMedic AI — Intelligent Data Quality & Cleaning Assistant
+🩺 DataMedic AI
 
-DataMedic AI is an AI-assisted Data Engineering and Data Quality platform that helps identify, analyze, clean, transform, and store raw customer data through an interactive web dashboard.
+AI-Assisted Data Quality & ETL Platform
 
-The application combines Python, Pandas, FastAPI, React, MySQL, and Gemini AI to create an end-to-end data-quality and ETL workflow.
+DataMedic AI is an AI-assisted data quality and data engineering platform that helps identify, analyze, clean, transform, and store raw customer data through an interactive web dashboard.
 
-It automatically detects common data-quality issues, generates a quality report, prepares cleaned records, loads transformed data into MySQL, and uses Gemini AI to provide human-readable explanations and recommendations.
+The platform combines Python, Pandas, FastAPI, React, MySQL, and Gemini AI to create an end-to-end data-quality and ETL workflow.
 
-📌 Project Overview
+It detects common data-quality issues, generates quality reports, cleans and standardizes records, loads transformed data into MySQL, and uses Gemini to provide human-readable explanations and recommendations.
 
-Real-world datasets often contain data-quality problems such as:
+🚀 Key Features
 
-Missing values
+🔹 Data Engineering & ETL
 
-Duplicate customer records
+Ingests raw customer data from CSV files
 
-Invalid numerical values
+Performs data validation and transformation
 
-Invalid email addresses
+Detects missing values and duplicate records
 
-Inconsistent text formatting
+Identifies invalid ages and email addresses
 
-Unstandardized data
+Standardizes inconsistent city names
 
-DataMedic AI automates the initial data-quality process through a web-based dashboard.
+Generates an automated data-quality report
 
-Complete Workflow
+Produces a cleaned dataset
 
-Raw Customer CSV
-       ↓
-React Dashboard
-       ↓
-FastAPI Backend
-       ↓
-Python + Pandas
-       ↓
-Data Quality Analysis
-       ↓
-Data Cleaning & Standardization
-       ↓
-Quality Report
-       ↓
-Cleaned Dataset
-       ↓
-MySQL Database
-       ↓
-Gemini AI Analysis
-       ↓
-AI Explanation & Recommendations
+Loads cleaned customer data into MySQL
 
-🎯 Problem Statement
+🔹 Data Quality Analysis
 
-Poor-quality data can lead to:
-
-Incorrect analytics
-
-Duplicate customer information
-
-Incorrect business reports
-
-Invalid calculations
-
-Database inconsistencies
-
-Unreliable decision-making
-
-For example, a customer record containing an invalid age, missing email, or duplicate email address should be identified before the data is used for further processing.
-
-DataMedic AI provides an automated workflow to detect these problems, clean the dataset, and prepare reliable records for database storage.
-
-✨ Features
-
-🔍 Automated Data Quality Analysis
-
-The application analyzes uploaded CSV datasets for:
+The platform analyzes datasets for:
 
 Missing values
 
 Duplicate customer records
 
-Invalid ages
+Duplicate email addresses
+
+Invalid age values
 
 Invalid email formats
 
@@ -86,29 +46,27 @@ Inconsistent city formatting
 
 The detected issues are presented through the interactive dashboard.
 
-🧹 Data Cleaning & Standardization
+🔹 Data Cleaning & Standardization
 
-DataMedic AI prepares a cleaned version of the uploaded dataset.
+The cleaning pipeline:
 
-The cleaning process includes:
+Removes duplicate customer records
 
-Removing duplicate records
+Converts invalid ages to missing values
 
-Standardizing city names
+Converts invalid email values to missing values
 
-Handling invalid age values
+Standardizes city names
 
-Handling invalid email values
+Prepares transformed records for database loading
 
-Preparing transformed records for database loading
-
-The cleaned dataset can also be downloaded as:
+The cleaned dataset can be downloaded as:
 
 cleaned_customers.csv
 
-📊 Data Quality Report
+🔹 Quality Report
 
-The backend generates a quality report containing metrics such as:
+The application generates an automated JSON quality report containing metrics such as:
 
 {
     "total_records": 10,
@@ -119,25 +77,15 @@ The backend generates a quality report containing metrics such as:
     "quality_score": 20.0
 }
 
-The values above represent the current sample dataset. Actual values change depending on the uploaded dataset.
+The actual values change depending on the uploaded dataset.
 
-The dashboard presents these metrics through:
+🔹 Interactive Dataset Dashboard
 
-Quality statistics
+The React dashboard provides:
 
-Quality score
+Dataset records
 
-Detected issue summaries
-
-Detailed analysis results
-
-Cleaned record information
-
-🗂️ Dataset Records
-
-The Dataset Records section displays customer records from the uploaded dataset.
-
-It provides:
+Customer search
 
 Search by ID, name, or email
 
@@ -145,231 +93,213 @@ City filtering
 
 Pagination
 
-Customer record viewing
+Cleaned-data preview
 
-Structured customer information
+Quality statistics
 
-Displayed fields include:
+Quality score
 
-ID
-
-Customer
-
-Age
-
-City
-
-Email
-
-🧹 Cleaned Data
-
-The Cleaned Data section displays the records produced by the data-cleaning process.
-
-It provides:
-
-Search
-
-City filtering
-
-Pagination
-
-Customer details
-
-Cleaned-record preview
+Detected issue summaries
 
 CSV download
 
-This allows users to inspect the transformed dataset before loading it into the database or using it downstream.
+ETL pipeline status
 
-🔄 ETL Pipeline
+MySQL loading
 
-DataMedic AI provides an interactive ETL pipeline showing the major processing stages:
+AI-generated insights
 
-01  CSV Input
-       ↓
-02  Quality Analysis
-       ↓
-03  Data Cleaning
-       ↓
-04  MySQL Load
-       ↓
-05  AI Insights
+Error handling and processing feedback
 
-The dashboard visually indicates the progress of the different processing stages during the current session.
+🔹 MySQL Integration
 
-🗄️ MySQL Integration
+Cleaned customer records can be loaded into MySQL directly through the application.
 
-Cleaned customer records can be loaded into a MySQL database directly through the DataMedic AI dashboard.
+Cleaned Customer Data
+        │
+        ▼
+      MySQL
+        │
+        ▼
+ customers table
 
-Example database structure:
+🔹 Gemini AI Analysis
 
-datamedic
-└── customers
+Gemini is used as an interpretation layer after deterministic data-quality processing.
 
-The MySQL database provides persistent storage for the transformed customer data.
+It provides:
 
-The project uses:
+Explanation of detected problems
 
-mysql-connector-python
+Why the issues matter
 
-for Python-to-MySQL connectivity.
+Recommended actions
 
-🤖 Gemini AI Integration
+Overall dataset assessment
 
-After the data-quality analysis is completed, DataMedic AI sends the generated quality report to Gemini AI.
-
-Gemini provides:
-
-A short explanation of detected problems
-
-Why the problems matter
-
-Recommended actions for a Data Engineer
-
-An overall assessment of the dataset
-
-The AI acts as an interpretation layer rather than replacing the deterministic data-quality rules.
-
-Architecture Principle
-
-Deterministic Processing
-        ↓
-Python + Pandas
-        ↓
-Data Quality Report
-        ↓
-AI Interpretation
-        ↓
-Gemini
-        ↓
-Explanation & Recommendations
-
-This separation keeps the core data-quality process predictable while using Generative AI for natural-language analysis.
+The core data-quality rules remain deterministic and are handled by Python and Pandas.
 
 🏗️ System Architecture
 
-                        DataMedic AI
+                    ┌─────────────────────┐
+                    │   Raw Customer CSV  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   React Dashboard   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   FastAPI Backend   │
+                    │      REST API       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Python + Pandas   │
+                    │   Data Processing   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+             ┌────────────────────────────────┐
+             │       Data Quality Checks       │
+             │                                │
+             │ • Missing Values               │
+             │ • Duplicate Records            │
+             │ • Invalid Ages                 │
+             │ • Invalid Emails               │
+             │ • City Standardization         │
+             └───────────────┬────────────────┘
                              │
                              ▼
-                   ┌──────────────────┐
-                   │ React Frontend   │
-                   │ Web Dashboard    │
-                   └────────┬─────────┘
-                            │
-                            ▼
-                   ┌──────────────────┐
-                   │ FastAPI Backend  │
-                   │ REST API         │
-                   └────────┬─────────┘
-                            │
-                            ▼
-                   ┌──────────────────┐
-                   │ Python + Pandas  │
-                   │ Data Processing  │
-                   └────────┬─────────┘
-                            │
-                            ▼
-             ┌──────────────────────────────┐
-             │      Data Quality Checks     │
-             │                              │
-             │ • Missing Values             │
-             │ • Duplicate Customers        │
-             │ • Invalid Ages               │
-             │ • Invalid Emails             │
-             │ • City Formatting             │
-             └──────────────┬───────────────┘
-                            │
-                            ▼
-                   ┌──────────────────┐
-                   │ Data Cleaning &  │
-                   │ Standardization  │
-                   └────────┬─────────┘
-                            │
-                 ┌──────────┴──────────┐
-                 ▼                     ▼
-        ┌─────────────────┐   ┌────────────────┐
-        │ Quality Report  │   │ MySQL Database │
-        │      JSON       │   │   Customers    │
-        └────────┬────────┘   └────────────────┘
-                 │
-                 ▼
-        ┌─────────────────┐
-        │    Gemini API   │
-        │    AI Analysis  │
-        └────────┬────────┘
-                 │
-                 ▼
-        ┌───────────────────┐
-        │ AI Explanation    │
-        │ & Recommendations │
-        └───────────────────┘
+                    ┌─────────────────────┐
+                    │ Data Cleaning &      │
+                    │ Standardization     │
+                    └──────────┬──────────┘
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                    ▼                     ▼
+             ┌──────────────┐      ┌──────────────┐
+             │ Quality      │      │ MySQL        │
+             │ Report JSON  │      │ Database     │
+             └──────┬───────┘      └──────────────┘
+                    │
+                    ▼
+             ┌──────────────┐
+             │ Gemini API   │
+             │ AI Analysis  │
+             └──────┬───────┘
+                    │
+                    ▼
+             ┌──────────────────────┐
+             │ AI Explanation &     │
+             │ Recommendations      │
+             └──────────────────────┘
+
+🧠 AI Architecture
+
+DataMedic AI separates deterministic data processing from generative AI interpretation.
+
+Raw Dataset
+     │
+     ▼
+Python + Pandas
+     │
+     ▼
+Data Quality Rules
+     │
+     ├── Missing Values
+     ├── Duplicate Detection
+     ├── Age Validation
+     ├── Email Validation
+     └── City Standardization
+     │
+     ▼
+Quality Report
+     │
+     ▼
+Gemini AI
+     │
+     ▼
+Explanation
+     │
+     ▼
+Recommendations
+
+This approach keeps the actual data-quality checks predictable while using Gemini for natural-language interpretation.
 
 🛠️ Technology Stack
 
-Technology
-
-Purpose
+Backend
 
 Python
 
-Core backend programming language
+FastAPI
 
 Pandas
 
-Data processing, validation, and transformation
-
-FastAPI
-
-Backend REST API
-
-React
-
-Interactive frontend dashboard
-
-Vite
-
-Frontend development and build tooling
-
-MySQL
-
-Relational database storage
-
 MySQL Connector/Python
-
-Python-to-MySQL connectivity
-
-Gemini API
-
-AI-powered data-quality analysis
-
-Google GenAI SDK
-
-Gemini API integration
 
 python-dotenv
 
-Environment variable management
+AI / GenAI
 
-JSON
+Google Gemini
 
-Quality report generation
+Google GenAI SDK
 
-Lucide React
+AI-assisted data-quality interpretation
 
-Frontend icons
+Frontend
+
+React
+
+Vite
+
+Axios
 
 Recharts
 
-Data-quality visualization
+Lucide React
 
-📂 Project Structure
+CSS
+
+Database
+
+MySQL
+
+SQL
+
+Relational data storage
+
+Data Engineering
+
+CSV ingestion
+
+ETL pipelines
+
+Data cleaning
+
+Data validation
+
+Data transformation
+
+Data-quality reporting
+
+Database loading
+
+📁 Project Structure
 
 datamedic-ai/
+
 │
+├── .env
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
-│
 ├── customers.csv
 │
 ├── llm_assistant.py
@@ -397,15 +327,19 @@ Important Files
 
 File / Folder
 
-Description
+Purpose
 
 backend/main.py
 
-FastAPI backend and API endpoints
+FastAPI backend and REST API endpoints
 
 backend/data_quality.py
 
 Data-quality analysis and cleaning logic
+
+backend/database.py
+
+Database connectivity and database operations
 
 llm_assistant.py
 
@@ -413,7 +347,7 @@ Gemini API integration and AI analysis
 
 load_mysql.py
 
-MySQL data-loading functionality
+Loads cleaned records into MySQL
 
 customers.csv
 
@@ -421,7 +355,7 @@ Sample customer dataset
 
 frontend/
 
-React/Vite dashboard
+React/Vite interactive dashboard
 
 requirements.txt
 
@@ -431,35 +365,106 @@ Python backend dependencies
 
 Prevents sensitive and unnecessary files from being committed
 
+.env contains local credentials and should never be committed to GitHub.
+
+node_modules should not be committed to GitHub. It can be recreated using npm install.
+
+⚙️ How It Works
+
+1. Data Ingestion
+
+Raw customer information is loaded from a CSV dataset.
+
+customers.csv
+      │
+      ▼
+FastAPI / React
+      │
+      ▼
+Data Processing
+
+2. Data Quality Analysis
+
+The quality engine checks the dataset for:
+
+Raw Data
+   │
+   ├── Missing values
+   ├── Duplicate records
+   ├── Invalid ages
+   ├── Invalid emails
+   └── City formatting
+          │
+          ▼
+   Quality Report
+
+3. Data Cleaning
+
+After identifying the issues, the cleaning pipeline transforms the data.
+
+Quality Issues
+      │
+      ├── Remove duplicate records
+      ├── Convert invalid ages
+      ├── Convert invalid emails
+      └── Standardize city names
+             │
+             ▼
+      Clean Customer Data
+
+4. Database Loading
+
+The cleaned dataset is prepared for persistent storage.
+
+Clean Customer Data
+        │
+        ▼
+      MySQL
+        │
+        ▼
+customers table
+
+5. AI Interpretation
+
+The quality report is passed to Gemini after deterministic processing.
+
+Quality Report
+      │
+      ▼
+   Gemini AI
+      │
+      ├── Explain detected issues
+      ├── Explain why they matter
+      ├── Recommend actions
+      └── Assess the dataset
+
 🔎 Data Quality Rules
 
-1. Missing Values
+Missing Values
 
-The pipeline identifies missing values using Pandas:
+Missing values are identified using Pandas:
 
 df.isnull().sum()
 
 This helps identify incomplete customer records.
 
-2. Duplicate Customers
+Duplicate Customers
 
-Customer records are checked for duplicate email addresses:
+Duplicate customer records are checked using email addresses:
 
 df.duplicated(subset=["email"], keep=False)
 
-This helps identify multiple records that may represent the same customer.
-
 Null email values are excluded from duplicate-email detection.
 
-3. Invalid Ages
+Invalid Ages
 
-The project considers ages outside the range of 0–120 invalid.
+Ages outside the range 0–120 are treated as invalid:
 
 (df["age"] < 0) | (df["age"] > 120)
 
-Invalid age values are identified during quality analysis and converted to missing values during the cleaning stage.
+Invalid age values are converted to missing values during cleaning.
 
-4. Invalid Emails
+Invalid Emails
 
 A basic email validation rule checks whether non-null email values contain:
 
@@ -472,11 +477,11 @@ ravi@gmail
 
 is identified as an invalid email value.
 
-Invalid email values are converted to missing values during the cleaning stage.
+Invalid email values are converted to missing values during cleaning.
 
-5. City Standardization
+City Standardization
 
-City values are standardized using:
+City names are standardized using:
 
 df["city"] = (
     df["city"]
@@ -490,13 +495,13 @@ CHENNAI
  Chennai
 chennai
 
-are standardized to:
+becomes:
 
 Chennai
 
 📊 Example Data Flow
 
-Example Input
+Example input:
 
 ID: 7
 Name: Suresh
@@ -508,9 +513,9 @@ The quality engine identifies:
 
 Invalid age
 
-During the cleaning stage, the invalid age is converted to a missing value.
+During cleaning, the invalid age is converted to a missing value.
 
-Similarly, inconsistent city formatting such as:
+Similarly:
 
 " Chennai"
 "CHENNAI"
@@ -520,9 +525,54 @@ is standardized to:
 
 "Chennai"
 
+🔄 ETL Pipeline
+
+The dashboard presents the complete ETL workflow:
+
+01  CSV Input
+       │
+       ▼
+02  Quality Analysis
+       │
+       ▼
+03  Data Cleaning
+       │
+       ▼
+04  MySQL Load
+       │
+       ▼
+05  AI Insights
+
+The pipeline demonstrates the core stages of a practical data engineering workflow:
+
+Data ingestion
+
+Data quality validation
+
+Data transformation
+
+Database loading
+
+AI-assisted interpretation
+
+📊 Quality Report
+
+For the included sample dataset, the quality engine identifies issues such as:
+
+Total records: 10
+Missing values: 3
+Duplicate records: 2
+Invalid ages: 2
+Invalid emails: 1
+Quality Score: 20.0%
+
+The cleaned dataset contains 9 records after duplicate removal.
+
+The quality report is generated as JSON and can be used as an input to the Gemini analysis layer.
+
 🌐 Backend API
 
-DataMedic AI exposes the following FastAPI endpoints:
+The FastAPI backend exposes endpoints for the complete workflow.
 
 Method
 
@@ -560,20 +610,27 @@ POST
 
 Load cleaned records into MySQL
 
-The React frontend communicates with these endpoints to perform the complete data-quality workflow.
+FastAPI also provides interactive API documentation at:
 
-FastAPI also provides interactive API documentation through:
+http://127.0.0.1:8000/docs
 
-/docs
+💻 Installation
 
-⚙️ Installation
+Prerequisites
+
+Install:
+
+Python 3.11+
+
+MySQL
+
+Node.js
+
+npm
 
 1. Clone the Repository
 
 git clone YOUR_GITHUB_REPOSITORY_URL
-
-Move into the project directory:
-
 cd datamedic-ai
 
 2. Create a Python Virtual Environment
@@ -584,13 +641,24 @@ Activate it on Windows:
 
 venv\Scripts\activate
 
-3. Install Backend Dependencies
+3. Install Python Dependencies
 
 pip install -r requirements.txt
 
+4. Install Frontend Dependencies
+
+cd frontend
+npm install
+
+Return to the project root:
+
+cd ..
+
 🔐 Environment Variables
 
-Create a .env file in the project root:
+Create a .env file in the project root.
+
+Example:
 
 GEMINI_API_KEY=your_gemini_api_key
 
@@ -599,9 +667,21 @@ MYSQL_USER=your_mysql_username
 MYSQL_PASSWORD=your_mysql_password
 MYSQL_DATABASE=datamedic
 
-The .env file contains sensitive credentials and should never be committed to GitHub.
+Do not commit .env to GitHub.
 
-The project .gitignore prevents the file from being tracked.
+The .gitignore file should include:
+
+.env
+*.db
+__pycache__/
+*.pyc
+.venv/
+venv/
+.vscode/
+node_modules/
+sample_quality_report.json
+
+If an API key is accidentally committed, revoke it and generate a new one.
 
 🗄️ MySQL Setup
 
@@ -613,7 +693,7 @@ Select the database:
 
 USE datamedic;
 
-Create the customers table according to the columns used by the project.
+Create the customers table according to the fields used by the project.
 
 Example structure:
 
@@ -626,17 +706,16 @@ customers
 
 Make sure the MySQL server is running before loading data.
 
-▶️ Running the Backend
+▶️ Running the Application
 
-From the project root, move into the backend directory:
+Start the Backend
+
+From the project root:
 
 cd backend
-
-Start the FastAPI application:
-
 uvicorn main:app --reload
 
-The API will be available at:
+The API will run at:
 
 http://127.0.0.1:8000
 
@@ -644,166 +723,147 @@ Interactive API documentation:
 
 http://127.0.0.1:8000/docs
 
-▶️ Running the Frontend
+Start the Frontend
 
-Open another terminal and move into the frontend directory:
+Open another terminal:
 
 cd frontend
-
-Install the frontend dependencies:
-
-npm install
-
-Start the Vite development server:
-
 npm run dev
 
-The React dashboard will then be available through the local URL provided by Vite.
+The Vite development server will provide the frontend URL shown in the terminal, typically:
 
-🔄 Application Workflow
+http://localhost:5173
 
-The complete application workflow is:
+💬 Example Workflow
 
-1. Upload CSV
-       ↓
-2. Analyze Dataset
-       ↓
-3. Detect Data Quality Issues
-       ↓
-4. Generate Quality Report
-       ↓
-5. Clean & Standardize Data
-       ↓
-6. View Cleaned Records
-       ↓
-7. Download Cleaned CSV
-       ↓
-8. Load Cleaned Data into MySQL
-       ↓
-9. Generate Gemini AI Insights
+Upload CSV
+     │
+     ▼
+Analyze Dataset
+     │
+     ▼
+Detect Quality Issues
+     │
+     ▼
+Generate Quality Report
+     │
+     ▼
+Clean & Standardize Data
+     │
+     ▼
+View Cleaned Records
+     │
+     ├──────────────► Download Cleaned CSV
+     │
+     ▼
+Load Data into MySQL
+     │
+     ▼
+Generate Gemini AI Insights
 
-🤖 AI Analysis
+🤖 Example AI Analysis
 
-After data-quality analysis is completed, DataMedic AI sends the generated quality report to Gemini.
+The AI receives structured quality information such as:
 
-The AI receives information about:
+Total Records: 10
+Missing Values: 3
+Duplicate Records: 2
+Invalid Ages: 2
+Invalid Emails: 1
+Quality Score: 20.0%
 
-Missing values
+Gemini then produces a human-readable interpretation:
 
-Duplicate records
-
-Invalid ages
-
-Invalid emails
-
-Quality score
-
-Gemini then provides:
-
-Explanation
-     ↓
+Data Quality Report
+        │
+        ▼
 Why the issues matter
-     ↓
+        │
+        ▼
 Recommended actions
-     ↓
+        │
+        ▼
 Overall dataset assessment
 
-The deterministic quality engine remains responsible for identifying the actual data-quality issues.
-
-Gemini is used to interpret the results and provide human-readable recommendations.
+The AI does not replace the deterministic validation engine.
 
 🗄️ MySQL Data Pipeline
 
-The cleaned records are prepared for MySQL storage.
+The cleaned records are prepared for database storage.
 
-The pipeline performs transformations such as:
+Raw Customer Dataset
+        │
+        ▼
+Data Quality Checks
+        │
+        ▼
+Data Cleaning
+        │
+        ▼
+Duplicate Removal
+        │
+        ▼
+Value Standardization
+        │
+        ▼
+MySQL
+        │
+        ▼
+customers table
 
-Reading the customer dataset
-        ↓
-Detecting data-quality problems
-        ↓
-Cleaning invalid values
-        ↓
-Removing duplicate email records
-        ↓
-Standardizing city names
-        ↓
-Preparing transformed records
-        ↓
-Connecting to MySQL
-        ↓
-Loading cleaned records into the customers table
+Example SQL Queries
 
-Example SQL Query
+View all customers:
 
 SELECT * FROM customers;
 
-Count the Loaded Records
+Count loaded records:
 
 SELECT COUNT(*)
 FROM customers;
 
-Group Records by City
+Group records by city:
 
 SELECT city, COUNT(*)
 FROM customers
 GROUP BY city;
 
-View Customer Information
+View customer information:
 
 SELECT name, city
 FROM customers;
 
-📈 Example Quality Analysis
+📈 Dashboard
 
-For the included sample dataset, the quality engine identifies issues such as:
+The React dashboard provides a centralized interface for:
 
-Total records: 10
-Missing values: 3
-Duplicate records: 2
-Invalid ages: 2
-Invalid emails: 1
-Quality Score: 20.0%
+Data-quality statistics
 
-The pipeline then cleans the dataset by:
+Quality score
 
-Removing duplicate email records
-        ↓
-Converting invalid ages to missing values
-        ↓
-Converting invalid emails to missing values
-        ↓
-Standardizing city names
-        ↓
-Preparing cleaned records
+Dataset records
 
-The cleaned dataset contains 9 records after duplicate removal.
+Search and filtering
 
-🔒 Security
+Cleaned data
 
-Sensitive credentials are stored using environment variables rather than being hard-coded in Python.
+CSV download
 
-The following files and directories should not be committed:
+ETL pipeline progress
 
-.env
-*.db
-__pycache__/
-*.pyc
-.venv/
-venv/
-.vscode/
-node_modules/
-sample_quality_report.json
+MySQL loading
 
-Never publish an API key in source code or GitHub.
+Gemini AI insights
 
-If an API key is accidentally committed, revoke it and generate a new key.
+The dashboard allows users to inspect the dataset before and after transformation.
 
 🎓 Data Engineering Concepts Demonstrated
 
-DataMedic AI demonstrates practical Data Engineering and ETL concepts including:
+DataMedic AI demonstrates practical skills in:
 
 Data ingestion
+
+ETL development
 
 Data validation
 
@@ -819,31 +879,35 @@ Missing-value detection
 
 Data standardization
 
-ETL pipeline design
-
-Relational database integration
-
-SQL analysis
+CSV processing
 
 JSON reporting
 
-REST API development
+SQL
+
+MySQL
+
+REST APIs
+
+FastAPI
+
+Database integration
+
+Generative AI
 
 API integration
 
-LLM integration
+Environment-based configuration
 
 Error handling
-
-Environment-based configuration
 
 🚀 Future Improvements
 
 Potential future enhancements include:
 
-Support for Excel and JSON input files
+Excel and JSON input support
 
-Automated scheduled data pipelines
+Automated scheduled pipelines
 
 Additional data-quality rules
 
@@ -855,7 +919,7 @@ PostgreSQL support
 
 Apache Airflow integration
 
-PySpark-based processing for larger datasets
+PySpark processing for larger datasets
 
 Cloud storage integration
 
@@ -865,11 +929,11 @@ Automated anomaly detection
 
 Advanced AI-assisted data-quality recommendations
 
-🎯 Project Goal
+🎯 Project Goals
 
-The goal of DataMedic AI is to demonstrate how practical Data Engineering and ETL techniques can be combined with Generative AI to create an intelligent data-quality workflow.
+DataMedic AI was built to demonstrate how practical Data Engineering + ETL + Data Quality + Generative AI techniques can be combined into a single application.
 
-The core processing remains deterministic:
+The core processing is deterministic:
 
 Python
    +
@@ -879,15 +943,17 @@ ETL
    +
 MySQL
 
-Gemini provides an additional natural-language intelligence layer:
+Gemini adds a natural-language intelligence layer:
 
 Data Quality Report
-        ↓
+        │
+        ▼
       Gemini
-        ↓
+        │
+        ▼
 Explanation + Recommendations
 
-This architecture combines reliable data processing with AI-assisted interpretation while keeping the core data-quality rules deterministic and predictable.
+The project focuses on using AI to interpret and explain data-quality results, while keeping the underlying validation and transformation logic predictable.
 
 👨‍💻 Author
 
@@ -916,8 +982,10 @@ Gemini AI interpretation layer
 
 Automated data cleaning and standardization
 
-Quality report generation
+Automated quality report generation
 
 Cleaned CSV export
 
 Practical Data Engineering architecture
+
+AI-assisted data-quality analysis
