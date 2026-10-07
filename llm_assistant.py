@@ -31,14 +31,18 @@ Provide:
 Keep the explanation simple and practical.
 """
 
-    # Try Gemini up to 3 times
-    for attempt in range(3):
+    # Try Gemini up to 2 times
+    for attempt in range(2):
 
         try:
 
             interaction = client.interactions.create(
                 model="gemini-3.5-flash",
-                input=prompt
+                input=prompt,
+                generation_config={
+                    "thinking_level": "minimal"
+                },
+                timeout=15000
             )
 
             return interaction.output_text
@@ -47,17 +51,16 @@ Keep the explanation simple and practical.
 
             print(
                 f"Gemini request failed "
-                f"(attempt {attempt + 1}/3)"
+                f"(attempt {attempt + 1}/2)"
             )
 
             print("Error:", e)
 
-            # Wait before trying again
-            if attempt < 2:
-                print("Retrying in 5 seconds...\n")
-                time.sleep(5)
+            # Wait briefly before retrying
+            if attempt < 1:
+                print("Retrying in 2 seconds...\n")
+                time.sleep(2)
 
-    # If all attempts fail
     return """
 AI analysis is temporarily unavailable.
 
