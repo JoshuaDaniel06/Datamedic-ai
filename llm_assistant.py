@@ -36,6 +36,8 @@ Keep the explanation simple and practical.
 
         try:
 
+            print("Starting Gemini request...")
+
             interaction = client.interactions.create(
                 model="gemini-3.5-flash",
                 input=prompt,
@@ -44,6 +46,8 @@ Keep the explanation simple and practical.
                 },
                 timeout=15000
             )
+
+            print("Gemini response received.")
 
             return interaction.output_text
 
