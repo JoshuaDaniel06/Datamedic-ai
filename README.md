@@ -1,4 +1,3 @@
-````markdown
 # 🩺 DataMedic AI
 
 ## AI-Assisted Data Quality & ETL Platform
@@ -135,10 +134,6 @@ The cleaning pipeline can:
 The cleaned dataset can be downloaded as:
 
 ```
-
-```
-
-```
 cleaned_customers.csv
 ```
 
@@ -149,10 +144,6 @@ cleaned_customers.csv
 DataMedic AI generates a structured JSON quality report.
 
 Example:
-
-```
-
-```
 
 ```
 {
@@ -196,10 +187,6 @@ The React dashboard provides:
 Cleaned customer records can be loaded into MySQL through the application.
 
 ```
-
-```
-
-```
 Cleaned Customer Data
         │
         ▼
@@ -210,10 +197,6 @@ Cleaned Customer Data
 ```
 
 This allows the project to demonstrate a complete:
-
-```
-
-```
 
 ```
 ETL → Database → Analytics
@@ -237,10 +220,6 @@ It provides:
 The actual data-quality rules remain deterministic and are handled by Python and Pandas.
 
 ```
-
-```
-
-```
 Python + Pandas
        │
        ▼
@@ -259,10 +238,6 @@ Explanation + Recommendations
 ---
 
 # 🏗️ System Architecture
-
-```
-
-```
 
 ```
                     ┌─────────────────────┐
@@ -331,10 +306,6 @@ Explanation + Recommendations
 DataMedic AI separates **deterministic data processing** from **generative AI interpretation**.
 
 ```
-
-```
-
-```
 Raw Dataset
      │
      ▼
@@ -369,10 +340,6 @@ This architecture keeps the actual validation and transformation predictable whi
 # 🔄 ETL Pipeline
 
 DataMedic AI follows a practical ETL workflow.
-
-```
-
-```
 
 ```
 01  CSV Input
@@ -410,10 +377,6 @@ The pipeline performs:
 The cleaned records are loaded into MySQL.
 
 ```
-
-```
-
-```
 CSV
  ↓
 Extract
@@ -434,10 +397,6 @@ MySQL
 Missing values are identified using Pandas.
 
 ```
-
-```
-
-```
 df.isnull().sum()
 ```
 
@@ -448,10 +407,6 @@ This helps identify incomplete customer records.
 ## Duplicate Customers
 
 Duplicate customer records are checked using email addresses.
-
-```
-
-```
 
 ```
 df.duplicated(subset=["email"], keep=False)
@@ -466,10 +421,6 @@ Null email values are excluded from duplicate-email detection.
 Ages outside the range `0–120` are treated as invalid.
 
 ```
-
-```
-
-```
 (df["age"] < 0) | (df["age"] > 120)
 ```
 
@@ -482,19 +433,11 @@ Invalid age values are converted to missing values during cleaning.
 A basic validation rule checks whether non-null email values contain:
 
 ```
-
-```
-
-```
 @
 .
 ```
 
 For example:
-
-```
-
-```
 
 ```
 ravi@gmail
@@ -511,10 +454,6 @@ Invalid email values are converted to missing values during cleaning.
 City names are standardized using:
 
 ```
-
-```
-
-```
 df["city"] = (
     df["city"]
     .str.strip()
@@ -525,20 +464,12 @@ df["city"] = (
 For example:
 
 ```
-
-```
-
-```
 CHENNAI
  Chennai
 chennai
 ```
 
 becomes:
-
-```
-
-```
 
 ```
 Chennai
@@ -551,10 +482,6 @@ Chennai
 Example input:
 
 ```
-
-```
-
-```
 ID: 7
 Name: Suresh
 Age: -5
@@ -565,20 +492,12 @@ Email: suresh@gmail.com
 The quality engine identifies:
 
 ```
-
-```
-
-```
 Invalid age
 ```
 
 During cleaning, the invalid age is converted to a missing value.
 
 Similarly:
-
-```
-
-```
 
 ```
 " Chennai"
@@ -589,10 +508,6 @@ Similarly:
 is standardized to:
 
 ```
-
-```
-
-```
 "Chennai"
 ```
 
@@ -601,10 +516,6 @@ is standardized to:
 # 📈 Data Quality Report
 
 For the included sample dataset, the quality engine identifies issues such as:
-
-```
-
-```
 
 ```
 Total records: 10
@@ -628,10 +539,6 @@ The quality report is generated as JSON and can be passed to the Gemini analysis
 After the quality analysis is completed, the generated report is sent to Gemini.
 
 The AI receives structured information such as:
-
-```
-
-```
 
 ```
 Total Records
@@ -669,10 +576,6 @@ The LLM does **not** replace the underlying validation engine.
 DataMedic AI stores cleaned customer data in MySQL.
 
 ```
-
-```
-
-```
 Raw Dataset
      │
      ▼
@@ -696,18 +599,10 @@ customers
 View all customers:
 
 ```
-
-```
-
-```
 SELECT * FROM customers;
 ```
 
 Count loaded records:
-
-```
-
-```
 
 ```
 SELECT COUNT(*)
@@ -717,20 +612,12 @@ FROM customers;
 Group records by city:
 
 ```
-
-```
-
-```
 SELECT city, COUNT(*)
 FROM customers
 GROUP BY city;
 ```
 
 View customer information:
-
-```
-
-```
 
 ```
 SELECT name, city
@@ -774,10 +661,6 @@ Allows users to inspect transformed records and download the cleaned CSV.
 Displays the progress of:
 
 ```
-
-```
-
-```
 CSV
  ↓
 Analysis
@@ -816,10 +699,6 @@ DataMedic AI uses FastAPI for the backend REST API.
 | `POST` | `/load`        | Load cleaned records into MySQL |
 
 FastAPI provides interactive API documentation at:
-
-```
-
-```
 
 ```
 http://127.0.0.1:8000/docs
@@ -879,10 +758,6 @@ http://127.0.0.1:8000/docs
 ---
 
 # 📁 Project Structure
-
-```
-
-```
 
 ```
 datamedic-ai/
@@ -957,10 +832,6 @@ Install:
 ## 1. Clone the Repository
 
 ```
-
-```
-
-```
 git clone https://github.com/JoshuaDaniel06/DataMedic-ai.git
 cd DataMedic-ai
 ```
@@ -970,18 +841,10 @@ cd DataMedic-ai
 ## 2. Create a Python Virtual Environment
 
 ```
-
-```
-
-```
 python -m venv venv
 ```
 
 ### Windows
-
-```
-
-```
 
 ```
 venv\Scripts\activate
@@ -992,10 +855,6 @@ venv\Scripts\activate
 ## 3. Install Backend Dependencies
 
 ```
-
-```
-
-```
 pip install -r requirements.txt
 ```
 
@@ -1004,19 +863,11 @@ pip install -r requirements.txt
 ## 4. Install Frontend Dependencies
 
 ```
-
-```
-
-```
 cd frontend
 npm install
 ```
 
 Return to the project root:
-
-```
-
-```
 
 ```
 cd ..
@@ -1027,10 +878,6 @@ cd ..
 # 🔐 Environment Variables
 
 Create a `.env` file in the project root.
-
-```
-
-```
 
 ```
 GEMINI_API_KEY=your_gemini_api_key
@@ -1046,10 +893,6 @@ MYSQL_DATABASE=datamedic
 Never commit `.env` to GitHub.
 
 Your `.gitignore` should contain:
-
-```
-
-```
 
 ```
 .env
@@ -1071,28 +914,16 @@ If an API key is accidentally exposed, revoke it and generate a new one.
 Create the database:
 
 ```
-
-```
-
-```
 CREATE DATABASE datamedic;
 ```
 
 Select the database:
 
 ```
-
-```
-
-```
 USE datamedic;
 ```
 
 The main customer table contains fields such as:
-
-```
-
-```
 
 ```
 customers
@@ -1114,10 +945,6 @@ Make sure MySQL is running before loading data.
 From the project root:
 
 ```
-
-```
-
-```
 cd backend
 uvicorn main:app --reload
 ```
@@ -1125,18 +952,10 @@ uvicorn main:app --reload
 Backend:
 
 ```
-
-```
-
-```
 http://127.0.0.1:8000
 ```
 
 FastAPI documentation:
-
-```
-
-```
 
 ```
 http://127.0.0.1:8000/docs
@@ -1149,19 +968,11 @@ http://127.0.0.1:8000/docs
 Open another terminal:
 
 ```
-
-```
-
-```
 cd frontend
 npm run dev
 ```
 
 The Vite development server will display the local frontend URL, normally:
-
-```
-
-```
 
 ```
 http://localhost:5173
@@ -1170,10 +981,6 @@ http://localhost:5173
 ---
 
 # 🔄 Complete Application Workflow
-
-```
-
-```
 
 ```
                     CSV Upload
@@ -1206,10 +1013,6 @@ http://localhost:5173
 # ☁️ Deployment
 
 DataMedic AI is deployed as a full-stack application.
-
-```
-
-```
 
 ```
                     User
@@ -1351,10 +1154,6 @@ DataMedic AI was built to demonstrate how **Data Engineering, ETL, Data Quality,
 The architecture follows:
 
 ```
-
-```
-
-```
 Python
    +
 Pandas
@@ -1371,10 +1170,6 @@ Gemini AI
 ```
 
 The key principle is:
-
-```
-
-```
 
 ```
 Rules → Python
@@ -1421,10 +1216,6 @@ See the `LICENSE` file for details.
 Interested in:
 
 ```
-
-```
-
-```
 Data Engineering
 ETL
 Python
@@ -1435,4 +1226,3 @@ FastAPI
 PySpark
 Generative AI
 ```
-
